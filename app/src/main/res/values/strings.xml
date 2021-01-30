@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">NYCSchools</string>
+    <string name="loading_schools">Loading Schools …</string>
+    <string name="school_list">School list</string>
+    <string name="school_name">Name of the School</string>
+    <string name="languages">Languages: %s</string>
+    <string name="watchers">Watchers: %s</string>
+    <string name="openIssues">Open Issues: %s</string>
+    <string name="created_at">Created At: %s</string>
+    <string name="updated_at">Updated At: %s</string>
+    <string name="clone_url">Clone URL: %s</string>
+    <string name="school_overview">School Overview</string>
+    <string name="school_address">School Address</string>
+    <string name="school_description">School Overview</string>
+    <string name="school_sat_students_count">Total SAT takers</string>
+    <string name="school_sat_math">SAT Score - Math</string>
+    <string name="school_sat_reading">SAT Score - Reading</string>
+    <string name="school_sat_writing">SAT Score - Writing</string>
+    <string name="open_issues">Open Issues</string>
+    <string name="loading_school">Loading School …</string>
+    <string name="list_title_name">NYCSchools List</string>
+    <string name="details_title_name">NYCSchool Details</string>
+</resources>

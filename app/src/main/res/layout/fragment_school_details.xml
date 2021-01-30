@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.shreyas.nycschools.viewmodel.SchoolDetailsViewModel" />
+
+        <variable
+            name="isLoading"
+            type="boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/school_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/loading_school"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:indeterminate="true"
+            android:text="@string/loading_school"
+            android:visibility="@{isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/item_horizontal_margin"
+            android:layout_marginTop="@dimen/item_horizontal_margin"
+            android:layout_marginEnd="@dimen/item_horizontal_margin"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:visibility="@{!isLoading ? View.VISIBLE : View.GONE}">
+
+
+            <TextView
+                android:id="@+id/school_name_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/school_name"
+                android:text="@string/school_name"
+                android:textSize="@dimen/project_header2" />
+
+            <TextView
+                android:id="@+id/school_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/school_name"
+                android:paddingBottom="5dp"
+                android:text="@{viewModel.schoolSATScores.get(0).school_name}"
+                android:textSize="@dimen/project_header1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/school_desc_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:contentDescription="@string/school_overview"
+                android:text="@string/school_overview"
+                android:textSize="@dimen/project_header2" />
+
+            <TextView
+                android:id="@+id/school_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/school_description"
+                android:text="@{viewModel.selectedSchool.overview_paragraph}"
+                android:textSize="@dimen/project_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/school_sat_count_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:contentDescription="@string/school_sat_students_count"
+                android:text="@string/school_sat_students_count"
+                android:textSize="@dimen/project_header2" />
+
+
+            <TextView
+                android:id="@+id/sat_test_takers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.schoolSATScores.get(0).num_of_sat_test_takers}"
+                android:textSize="@dimen/project_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/school_math_score_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:contentDescription="@string/school_sat_math"
+                android:text="@string/school_sat_math"
+                android:textSize="@dimen/project_header2" />
+
+
+            <TextView
+                android:id="@+id/math_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/school_sat_math"
+                android:text="@{viewModel.schoolSATScores.get(0).sat_math_avg_score}"
+                android:textSize="@dimen/project_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/school_reading_score_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:contentDescription="@string/school_sat_reading"
+                android:text="@string/school_sat_reading"
+                android:textSize="@dimen/project_header2" />
+
+            <TextView
+                android:id="@+id/reading_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/school_sat_reading"
+                android:text="@{viewModel.schoolSATScores.get(0).sat_critical_reading_avg_score}"
+                android:textSize="@dimen/project_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/school_writing_score_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:contentDescription="@string/school_sat_writing"
+                android:text="@string/school_sat_writing"
+                android:textSize="@dimen/project_header2" />
+
+
+            <TextView
+                android:id="@+id/writing_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/school_sat_writing"
+                android:text="@{viewModel.schoolSATScores.get(0).sat_writing_avg_score}"
+                android:textSize="@dimen/project_text"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
