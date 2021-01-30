@@ -10,3 +10,7 @@
 7. RecyclerView and CardView for list and individual list item views
 8. Mockito/Espresso/extJunit/Robolectric for unit testing and android tests for viewmodel, views and repository testing
 9. OKHttp Interceptor/Mockserver for logging service responses on Logcat and creating mock server for testing Repository
+
+![alt text](https://github.com/shreyasmp/SchoolList-MVVM-Retrofit-Dagger-Kotlin_withTests/blob/develop/AndroidTests.png "Android Tests")
+
+![alt text](https://github.com/shreyasmp/SchoolList-MVVM-Retrofit-Dagger-Kotlin_withTests/blob/develop/UnitTests.png "Unit Tests")
