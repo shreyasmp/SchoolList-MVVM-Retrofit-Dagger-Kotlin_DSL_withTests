@@ -1,11 +1,11 @@
 package com.shreyas.nycschools.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.google.common.truth.Truth.assertThat
 import com.shreyas.nycschools.base.MockServerBaseTest
 import com.shreyas.nycschools.service.INYCSchoolService
 import com.shreyas.nycschools.utils.ResultWrapper
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
@@ -39,8 +39,8 @@ class NYCSchoolRepositoryTest : MockServerBaseTest() {
             when (val result = repository.getNYCSchoolList()) {
                 is ResultWrapper.SUCCESS -> {
                     val response = result.value.value
-                    assertNotNull(response)
-                    assertEquals(response?.size, 440)
+                    assertThat(response).isNotNull()
+                    assertThat(response?.size).isEqualTo(440)
                 }
             }
         }
@@ -53,8 +53,8 @@ class NYCSchoolRepositoryTest : MockServerBaseTest() {
             when (val result = repository.getNYCSchoolList()) {
                 is ResultWrapper.SUCCESS -> {
                     val response = result.value.value
-                    assertNotNull(response)
-                    assertEquals(response?.size, 0)
+                    assertThat(response).isNotNull()
+                    assertThat(response?.size).isEqualTo(0)
                 }
             }
         }
@@ -68,7 +68,7 @@ class NYCSchoolRepositoryTest : MockServerBaseTest() {
                 is ResultWrapper.FAILURE -> {
                     assertNotNull(result)
                     val expectedResponse = ResultWrapper.FAILURE(null)
-                    assertEquals(expectedResponse.code, (result).code)
+                    assertThat(expectedResponse.code).isEqualTo((result).code)
                 }
             }
         }
@@ -81,8 +81,8 @@ class NYCSchoolRepositoryTest : MockServerBaseTest() {
             when (val result = repository.getNYCSchoolSATScores("01M292")) {
                 is ResultWrapper.SUCCESS -> {
                     val response = result.value.value
-                    assertNotNull(response)
-                    assertEquals(response?.size, 1)
+                    assertThat(response).isNotNull()
+                    assertThat(response?.size).isEqualTo(1)
                 }
             }
         }
@@ -95,8 +95,8 @@ class NYCSchoolRepositoryTest : MockServerBaseTest() {
             when (val result = repository.getNYCSchoolSATScores("01M292")) {
                 is ResultWrapper.SUCCESS -> {
                     val response = result.value.value
-                    assertNotNull(response)
-                    assertEquals(response?.size, 0)
+                    assertThat(response).isNotNull()
+                    assertThat(response?.size).isEqualTo(0)
                 }
             }
         }
@@ -110,7 +110,7 @@ class NYCSchoolRepositoryTest : MockServerBaseTest() {
                 is ResultWrapper.FAILURE -> {
                     assertNotNull(result)
                     val expectedResponse = ResultWrapper.FAILURE(null)
-                    assertEquals(expectedResponse.code, (result).code)
+                    assertThat(expectedResponse.code).isEqualTo((result).code)
                 }
             }
         }

@@ -12,8 +12,6 @@ import com.shreyas.nycschools.util.testObserver
 import io.mockk.impl.annotations.SpyK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -78,8 +76,8 @@ class SchoolListViewModelTest : BaseViewModelTest() {
             }
             viewModel.fetchSchoolList()
             shadowOf(getMainLooper()).idle()
-            assertNull(viewModel.schoolList.value)
-            assertEquals(schoolList, viewModel.schoolList.value)
+            assertThat(viewModel.schoolList.value).isNull()
+            assertThat(viewModel.schoolList.value).isEqualTo(schoolList)
         }
     }
 
@@ -93,8 +91,8 @@ class SchoolListViewModelTest : BaseViewModelTest() {
             }
             viewModel.fetchSchoolList()
             shadowOf(getMainLooper()).idle()
-            assertNull(viewModel.schoolList.value)
-            assertEquals(exception.message(), viewModel.schoolList.value)
+            assertThat(viewModel.schoolList.value).isNull()
+            assertThat(viewModel.schoolList.value).isEqualTo(exception.message())
         }
     }
 
