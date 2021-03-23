@@ -53,7 +53,7 @@ class SchoolListViewModelTest : BaseViewModelTest() {
             fileName = "schools_list.json",
             tClass = School::class.java
         )
-        viewModel._schoolList.value = schoolList
+        viewModel._schoolList.value = schoolList as MutableList<School>
         val schoolListLiveData = viewModel.schoolList.testObserver()
         assertThat(schoolListLiveData.observedValues).containsExactly(schoolList)
     }
