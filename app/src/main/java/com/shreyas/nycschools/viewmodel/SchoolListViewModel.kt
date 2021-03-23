@@ -1,6 +1,7 @@
 package com.shreyas.nycschools.viewmodel
 
 import android.util.Log
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -19,9 +20,10 @@ class SchoolListViewModel @Inject constructor(repository: NYCSchoolRepository) :
     companion object {
         private val TAG = SchoolListViewModel::class.java.simpleName
     }
-    
-    val _schoolList: MutableLiveData<List<School>> = MutableLiveData()
-    val schoolList: LiveData<List<School>> = _schoolList
+
+    @VisibleForTesting
+    internal val _schoolList: MutableLiveData<MutableList<School>> = MutableLiveData()
+    val schoolList: LiveData<MutableList<School>> = _schoolList
 
     fun fetchSchoolList() {
         schoolJob = viewModelScope.launch {
@@ -31,7 +33,7 @@ class SchoolListViewModel @Inject constructor(repository: NYCSchoolRepository) :
             when (result) {
                 is ResultWrapper.SUCCESS -> {
                     _isError.value = false
-                    _schoolList.value = result.value.value
+                    _schoolList.value = result.value.value as MutableList<School>
                     Log.i(TAG, "School List Response: ${result.value.value}")
                 }
                 is ResultWrapper.FAILURE -> {

@@ -3,6 +3,7 @@ package com.shreyas.nycschools.view
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.shreyas.nycschools.R
@@ -17,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         private val TAG = MainActivity::class.java.simpleName
     }
 
-    private lateinit var binding: ActivityMainBinding
+    @VisibleForTesting
+    internal lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

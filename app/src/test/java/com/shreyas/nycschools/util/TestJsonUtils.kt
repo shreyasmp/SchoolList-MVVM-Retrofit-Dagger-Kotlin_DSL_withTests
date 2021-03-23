@@ -2,6 +2,8 @@ package com.shreyas.nycschools.util
 
 import android.util.Log
 import com.google.gson.Gson
+import com.google.gson.JsonArray
+import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
 import java.io.File
 import java.io.IOException
@@ -76,5 +78,19 @@ object TestJsonUtils {
         val location = this.javaClass.classLoader!!.getResource(fileName)
         val file = File(location.path)
         return String(file.readBytes())
+    }
+
+    fun <T> getObjectList(jsonString: String, className: Class<T>): List<T> {
+        val list: MutableList<T> = ArrayList()
+        try {
+            val gson = Gson()
+            val array: JsonArray = JsonParser().parse(jsonString).asJsonArray
+            for (jsonElement in array) {
+                list.add(gson.fromJson(jsonElement, className))
+            }
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+        return list
     }
 }

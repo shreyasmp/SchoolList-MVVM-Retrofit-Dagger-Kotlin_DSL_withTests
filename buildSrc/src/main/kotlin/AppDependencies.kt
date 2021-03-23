@@ -43,7 +43,8 @@ object AppDependencies {
     const val archCoreTesting = "androidx.arch.core:core-testing:${Versions.archCore}"
     const val hamcrest = "org.hamcrest:hamcrest-library:${Versions.hamcrest}"
     const val truth = "com.google.truth:truth:${Versions.googleTruth}"
-    const val mockk = "io.mockk:mockk-android:${Versions.mockk}"
+    const val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
 
     const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
     const val robolectricShadows = "org.robolectric:shadows-multidex:${Versions.robolectricShadows}"
@@ -54,6 +55,7 @@ object AppDependencies {
     const val nharmaanMockito =
         "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.nhaarmanMockito}"
     const val okHttpMockServer = "com.squareup.okhttp3:mockwebserver:${Versions.okHttpMockServer}"
-    const val espressoIdling = "androidx.test.espresso:espresso-idling-resource:${Versions.espresso}"
+    const val espressoIdling =
+        "androidx.test.espresso:espresso-idling-resource:${Versions.espresso}"
     const val espressoContrib = "androidx.test.espresso:espresso-contrib:${Versions.espresso}"
 }
