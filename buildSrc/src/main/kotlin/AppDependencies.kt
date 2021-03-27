@@ -58,4 +58,5 @@ object AppDependencies {
     const val espressoIdling =
         "androidx.test.espresso:espresso-idling-resource:${Versions.espresso}"
     const val espressoContrib = "androidx.test.espresso:espresso-contrib:${Versions.espresso}"
+    const val fragmentTesting = "androidx.fragment:fragment-testing:${Versions.fragmentKTX}"
 }
