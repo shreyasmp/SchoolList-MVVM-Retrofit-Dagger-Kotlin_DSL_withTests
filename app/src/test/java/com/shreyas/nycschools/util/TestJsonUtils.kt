@@ -1,10 +1,13 @@
 package com.shreyas.nycschools.util
 
 import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
+import org.robolectric.Robolectric
 import java.io.File
 import java.io.IOException
 import java.io.InputStream
@@ -92,5 +95,17 @@ object TestJsonUtils {
             e.printStackTrace()
         }
         return list
+    }
+
+    fun startFragment(fragment: Fragment) {
+        val activity = Robolectric.buildActivity(FragmentActivity::class.java)
+            .create()
+            .start()
+            .resume()
+            .get()
+        val fragmentManager = activity.supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.add(fragment, null)
+        fragmentTransaction.commit()
     }
 }

@@ -1,6 +1,8 @@
 package com.shreyas.nycschools.base
 
 import android.os.Bundle
+import android.view.View
+import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -46,8 +48,8 @@ abstract class BaseFragment<M : BaseViewModel> : Fragment() {
         alert.show()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         subscribeUI()
     }
@@ -84,5 +86,6 @@ abstract class BaseFragment<M : BaseViewModel> : Fragment() {
     }
 
     // Protected method to set title for Fragment toolbar
-    protected open fun getTitle() = ""
+    @VisibleForTesting
+    internal open fun getTitle() = ""
 }
