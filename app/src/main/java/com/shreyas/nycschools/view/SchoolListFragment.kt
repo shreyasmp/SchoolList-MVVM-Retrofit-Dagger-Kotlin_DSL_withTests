@@ -36,9 +36,7 @@ class SchoolListFragment : BaseFragment<SchoolListViewModel>(), SchoolListItemCl
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
-        viewModel.fetchSchoolList()
-
+        
         subscribeUI()
 
         return binding.root
