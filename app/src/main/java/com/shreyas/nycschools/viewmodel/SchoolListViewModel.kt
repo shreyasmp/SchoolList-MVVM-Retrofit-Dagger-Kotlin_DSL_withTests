@@ -25,7 +25,12 @@ class SchoolListViewModel @Inject constructor(repository: NYCSchoolRepository) :
     internal val _schoolList: MutableLiveData<MutableList<School>> = MutableLiveData()
     val schoolList: LiveData<MutableList<School>> = _schoolList
 
-    fun fetchSchoolList() {
+    init {
+        fetchSchoolList()
+    }
+
+    @VisibleForTesting
+    internal fun fetchSchoolList() {
         schoolJob = viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 repository.getNYCSchoolList()

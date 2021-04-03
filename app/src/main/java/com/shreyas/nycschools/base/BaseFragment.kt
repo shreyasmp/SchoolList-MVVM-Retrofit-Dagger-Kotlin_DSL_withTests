@@ -2,7 +2,6 @@ package com.shreyas.nycschools.base
 
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -70,22 +69,16 @@ abstract class BaseFragment<M : BaseViewModel> : Fragment() {
     }
 
     private fun setFragmentTitle() {
-        val screenTitle = getTitle()
         if (activity is AppCompatActivity) {
             val supportActionBar = (activity as AppCompatActivity).supportActionBar
             if (supportActionBar != null) {
-                if (screenTitle.isNotEmpty()) {
-                    supportActionBar.title = screenTitle
+                if (getTitle().isNotEmpty()) {
+                    supportActionBar.title = getTitle()
                 }
                 supportActionBar.setDisplayHomeAsUpEnabled(true)
             }
         }
-        if (screenTitle.isNotEmpty()) {
-            requireActivity().title = getTitle()
-        }
     }
 
-    // Protected method to set title for Fragment toolbar
-    @VisibleForTesting
-    internal open fun getTitle() = ""
+    protected open fun getTitle() = ""
 }
