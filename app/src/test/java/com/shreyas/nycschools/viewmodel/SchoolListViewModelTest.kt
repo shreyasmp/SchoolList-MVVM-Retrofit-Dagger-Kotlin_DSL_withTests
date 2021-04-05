@@ -99,6 +99,6 @@ class SchoolListViewModelTest : BaseViewModelTest() {
     @After
     override fun tearDown() {
         super.tearDown()
-        viewModel.schoolList.observeForever(schoolListResponseObserver)
+        viewModel.schoolList.removeObserver(schoolListResponseObserver)
     }
 }

@@ -122,6 +122,6 @@ class SchoolDetailsViewModelTest : BaseViewModelTest() {
     @After
     override fun tearDown() {
         super.tearDown()
-        viewModel.schoolSATScores.observeForever(schoolSATScoresResponseObserver)
+        viewModel.schoolSATScores.removeObserver(schoolSATScoresResponseObserver)
     }
 }
