@@ -6,6 +6,7 @@ import android.view.View
 import com.google.common.truth.Truth.assertThat
 import com.shreyas.nycschools.R
 import com.shreyas.nycschools.runner.SchoolRobolectricTestRunner
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -42,5 +43,10 @@ class MainActivityTest {
         assertThat(activity.binding.fragmentContainer.visibility).isEqualTo(View.VISIBLE)
         assertThat(activity.binding.mainLayout.visibility).isEqualTo(View.VISIBLE)
         assertThat(activity.binding.mainToolbar.visibility).isEqualTo(View.VISIBLE)
+    }
+
+    @After
+    fun tearDown() {
+        activity.finish()
     }
 }

@@ -1,5 +1,6 @@
 package com.shreyas.nycschools.view
 
+import android.os.Looper
 import android.view.View
 import android.widget.LinearLayout
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -14,6 +15,8 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
+import org.robolectric.Shadows
 
 @RunWith(SchoolRobolectricTestRunner::class)
 class SchoolRecyclerViewAdapterTest {
@@ -47,6 +50,8 @@ class SchoolRecyclerViewAdapterTest {
         viewHolder.bind(loadSchoolList()[0])
         viewHolder.binding.schoolName.text = loadSchoolList()[0].school_name
         viewHolder.binding.schoolAddress.text = loadSchoolList()[0].primary_address_line_1
+        viewHolder.binding.schoolListItemCard.performClick()
+        Shadows.shadowOf(Looper.getMainLooper()).idle()
 
         assertThat(viewHolder.binding.schoolName.visibility).isEqualTo(View.VISIBLE)
         assertThat(viewHolder.binding.schoolName.text).isEqualTo("Clinton School Writers & Artists, M.S. 260")
@@ -54,7 +59,7 @@ class SchoolRecyclerViewAdapterTest {
         assertThat(viewHolder.binding.schoolAddress.visibility).isEqualTo(View.VISIBLE)
         assertThat(viewHolder.binding.schoolAddress.text).isEqualTo("10 East 15th Street")
 
-        assertThat(viewHolder.binding.schoolListItemCard.performClick())
+        verify(mockListener).onClick(loadSchoolList()[0])
     }
 
     private fun createViewHolder(): SchoolRecyclerViewAdapter.SchoolViewHolder {
