@@ -55,7 +55,7 @@ object TestJsonUtils {
             val buffer = ByteArray(size)
             inputStream.read(buffer)
             val json = String(buffer, StandardCharsets.UTF_8)
-            return getObjectFromJsonString(json, tClass)
+            return Gson().fromJson(json, tClass)
         } catch (exception: Exception) {
             Log.d(TAG, "Exception: ${exception.message}")
         } finally {
@@ -68,13 +68,6 @@ object TestJsonUtils {
             }
         }
         return null
-    }
-
-    private fun <T> getObjectFromJsonString(
-        jsonData: String?,
-        tClass: Class<T>?
-    ): T {
-        return Gson().fromJson(jsonData, tClass)
     }
 
     fun getJsonAsString(fileName: String): String {
